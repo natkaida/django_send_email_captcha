@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="text-center">
+                    <div class="text-primary">
+                    Спасибо за интерес к вакансии!
+                    </div>
+                    <div class="mt-5">
+                        <p class="card-text">Мы изучим Ваше резюме и ответим в ближайшее время.</p>
+                        <a href="{% url 'application' %}" class="btn btn-primary">Отправить резюме на другую вакансию</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

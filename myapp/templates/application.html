@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center mb-4">Анкета кандидата</h1>
+<form class="row" method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+   {% if messages %}
+   <ul class="list-unstyled">
+      {% for message in messages %}
+      <li{% if message.tags %} class="text-danger"{% endif %}>{{ message }}</li>
+      {% endfor %}
+   </ul>
+   {% endif %}
+   <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Имя и фамилия</label>
+      {{ form.name }}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="age" class="form-label">Возраст</label>
+      {{ form.age }}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="education" class="form-label">Образование</label>
+      {{ form.education }}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="work_experience" class="form-label">Опыт работы</label>
+      {{ form.work_experience}}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="projects" class="form-label">Проекты</label>
+      {{ form.projects}}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email</label>
+      {{ form.email }}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="certificates" class="form-label">Сертификаты</label>
+      {% for checkbox in form.certificates %}
+      <div class="form-check">
+         <label for="id_tags_{{ forloop.counter }}">
+         <input type="checkbox"
+            name="certificates"
+            value="{{ forloop.counter }}"
+            class="form-check-input"
+            id="id_certificates_choice{{ forloop.counter }}"
+            value="{{ choice.id }}"/>
+         {{ checkbox.choice_label }}
+         </label>
+      </div>
+      {% endfor %}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="position" class="form-label">Выберите вакансию</label>
+      <select name="position" class="form-select">
+         {% for value in form.position.field.choices %}
+         <option value="{{ value.0 }}">{{ value.1 }}</option>
+         {% endfor %}
+      </select>
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="commercial_experience">Коммерческий опыт</label>
+      {% for value, label in form.commercial_experience.field.choices %}
+      <div>
+         <input type="radio" name="commercial_experience" value="{{ value }}">
+         <label>{{ label }}</label>
+      </div>
+      {% endfor %}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="resume" class="form-label">Загрузите подробное резюме (PDF, DOC, DOCX)</label>
+      {{ form.resume }}
+   </div>
+   <div class="col-md-6 mb-3">
+      <label for="resume" class="form-label">Введите слово с картинки</label>
+      {{ form.captcha }}
+      <button type="button" class="btn btn-warning btn-sm mt-2" id="refresh-captcha">Обновить капчу</button> 
+   </div>
+   <div class="col-12 text-center">
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+   </div>
+</form>
+{% endblock %}

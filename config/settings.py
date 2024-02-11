@@ -3,7 +3,7 @@ from config.utils import random_word
 import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-^z@xg+sqx0pd4)v0ksdgbr_l+rcwli*87^@wzrc_il53vc)5#o'
+SECRET_KEY = 'django-very-secret-key'
 
 DEBUG = True
 
@@ -104,11 +104,11 @@ CAPTCHA_CHALLENGE_FUNCT = random_word
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-RECIPIENT_ADDRESS = 'benny.and.sebastian@gmail.com' 
+RECIPIENT_ADDRESS = 'admin@gmail.com' 
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = 'kaidanatalia@yandex.ru'
-EMAIL_HOST_USER = 'kaidanatalia@yandex.ru' 
-EMAIL_HOST_PASSWORD = 'acysbognqswljvya' 
+DEFAULT_FROM_EMAIL = 'sender@yandex.ru'
+EMAIL_HOST_USER = 'yandex_user@yandex.ru' 
+EMAIL_HOST_PASSWORD = 'yourownpasswordhere' 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

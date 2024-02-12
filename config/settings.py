@@ -1,6 +1,6 @@
 from pathlib import Path
 from config.utils import random_word
-import os
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-very-secret-key'
@@ -99,7 +99,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
 
-CAPTCHA_FONT_PATH = os.path.join(STATIC_URL, 'fonts/arial.ttf')
+CAPTCHA_FONT_PATH =  'fonts/arial.ttf'
 CAPTCHA_CHALLENGE_FUNCT = random_word
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
